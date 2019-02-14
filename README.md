@@ -1,7 +1,7 @@
 # bash_remote_wall
 A bash script to simulate the old Unix 'wall' command over ssh
 
-Usage:
+## Usage:
 
 `(echo "message" | remote_wall.sh remote_machine)`
 This will assume that the superuser account on the remote machine is named root
@@ -16,3 +16,34 @@ In case you are forced to use ssh passwords, and want to incorporate this functi
 
 `(echo "message" | remote_wall.sh remote_machine root_name root_pass)`
 This will use the given root_name as name of the superuser account on the remote machine and will use sshpass to login without prompting for a password. This will only work if sshpass is installed on the local machine.
+
+## Example Output
+
+Sender:
+
+    user@local_machine$ cowsay "testing 123" | ~/remote_wall.sh network_machine
+    Running remote wall command on network_machine with text: 
+     _____________
+    < testing 123 >
+     -------------
+            \   ^__^
+             \  (oo)\_______
+                (__)\       )\/\
+                    ||----w |
+                    ||     ||
+    user@local_machine$
+    
+Receiver:
+
+    user@network_machine$
+    Broadcast message from user@local_machine (Thu Feb 14 19:39:36 2019):
+    
+     _____________
+    < testing 123 >
+     -------------
+            \   ^__^
+             \  (oo)\_______
+                (__)\       )\/\
+                    ||----w |
+                    ||     ||
+    user@network_machine$
